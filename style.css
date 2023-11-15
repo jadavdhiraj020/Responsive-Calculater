@@ -1,0 +1,163 @@
+@import url('https://cdn-uicons.flaticon.com/2.0.0/uicons-bold-straight/css/uicons-bold-straight.css');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.25rem;
+    /*color: #fff;*/
+}
+
+html,
+body {
+    height: 100%;
+    width: 100%;
+    -webkit-user-select: none; /* Chrome/Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none;
+}
+
+.main {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    overflow: hidden;
+}
+
+.left {
+    height: 100vh;
+    width: 80vw;
+}
+
+.display_container {
+    height: 35vh;
+    width: 100%;
+    font-weight: 500;
+    border-radius: 15px;
+    border: 5px solid rgb(166, 144, 144);
+    background-color: rgba(76, 71, 75, .6);
+}
+
+.small_display {
+    height: 13vh;
+    font-size: 1.5rem;
+}
+
+.big_display {
+    height: 22vh;
+    font-size: 5rem;
+}
+
+.big_display, .small_display {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+
+.btn_container {
+    height: 65vh;
+    width: 100%;
+    user-select: none;
+    display: flex;
+    align-content: space-evenly;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.btn {
+    height: 8.1vh;
+    width: 15vw;
+    font-size: 1.2rem;
+    font-weight: 900;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    cursor: pointer;
+    background-color: rgb(93, 82, 88);
+    box-shadow: 1px 1px 1px rgba(93, 82, 88, .9),
+    1px 1px 2px rgba(93, 82, 88, .8),
+    1px 1px 3px rgba(93, 82, 88, .7),
+    1px 1px 4px rgba(93, 82, 88, .6),
+    1px 1px 5px rgba(93, 82, 88, .5),
+    1px 1px 6px rgba(93, 82, 88, .4),
+    1px 1px 7px rgba(93, 82, 88, .3);
+}
+
+.btn:hover {
+    background-color: #726666;
+}
+
+.btn_num {
+    background-color: #726666;
+}
+
+.btn_num:hover {
+    background-color: rgb(92, 81, 87);
+}
+
+.btn_color {
+    background-color: rgb(100, 101, 228);
+}
+
+.btn_color:hover {
+    background-color: rgb(100, 101, 198);
+}
+
+.right {
+    flex-direction: column;
+    position: relative;
+    height: 100vh;
+    width: 20vw;
+}
+
+.history {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 10vh;
+    color: black;
+}
+
+.history_display {
+    height: 90vh;
+    background-color: rgb(45, 255, 196);
+}
+
+.btn_delete {
+    color: black;
+    cursor: pointer;
+    position: absolute;
+    bottom: 0;
+    right: 2%;
+    font-size: 2rem;
+}
+
+@media (width <= 860px) {
+
+    .left {
+        width: 100vh;
+    }
+
+    .small_display {
+        height: 13vh;
+        font-size: 1.2rem;
+    }
+
+    .big_display {
+        height: 22vh;
+        font-size: 2.8rem;
+    }
+
+    .right {
+        display: none;
+    }
+
+    .btn {
+        /* font-size: 1.2rem; */
+        width: 18vw;
+    }
+}

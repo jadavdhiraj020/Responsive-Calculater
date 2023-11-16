@@ -177,7 +177,7 @@ function divider(value) {
         if (value === 0) {
             return Infinity;
         } else {
-            return 1/value;
+            return 1 / value;
         }
     }
 }

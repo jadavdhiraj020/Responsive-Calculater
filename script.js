@@ -1,9 +1,12 @@
 let input_numbers = document.querySelectorAll('.btn');
 let small_display = document.querySelector('.small_display');
 let big_display = document.querySelector('.big_display');
+let history_display = document.querySelector('.history_display');
 const pi = 3.1415926535897932384626433832795;
 const expo = 2.7182818284590452353602874713527;
+let alternatives = 0;
 let value = '0';
+let history_html = '';
 let values;
 let input;
 let key;
@@ -24,22 +27,16 @@ function print_number() {
             } else if (input === 'x^y') {
                 value += '^';
                 small_display.innerHTML = value;
-            } else if (input === 'log' || input === 'n!' || input === '√' || input === 'x²') {
+            } else if (input === 'log' || input === 'n!' || input === '√' || input === 'x²' || input === '1/x' || input === 'ln') {
                 log_root_n(value);
+            } else if (input === 'sin' || input === 'cos' || input === 'tan') {
+                trigonometric(value);
             } else if (input === '10^x') {
                 value = '10^' + value;
                 small_display.innerHTML = value;
-            } else if (input === '1/x') {
-                values = small_display.innerHTML;
-                small_display.innerText = `1/(${values})`;
-                value = logarithm(value);
-                big_display.innerText = value;
-            } else if (input === 'sin' || input === 'cos' || input === 'tan') {
-                trigonometric(value);
-            } else if (input === 'CE') {
-                clear();
             } else if (input === '=') {
                 result(value);
+                history();
                 value = values || '';
             } else {
                 value += element.innerText;
@@ -49,31 +46,22 @@ function print_number() {
     });
 }
 
-
-function log_root_n(value) {
-    if (input === 'log') {
-        values = small_display.innerHTML;
-        value = logarithm(value);
-        small_display.innerText = `log(${values})`;
-        big_display.innerText = value;
-    } else if (input === '√') {
-        values = small_display.innerHTML;
-        value = squareRoot(value);
-        small_display.innerText = `sqrt(${values})`;
-        big_display.innerText = value;
-    } else if (input === 'n!') {
-        values = small_display.innerHTML;
-        value = factorial(value);
-        big_display.innerText = value;
-        small_display.innerText = `fact(${values})`;
-    } else if (input === 'x²') {
-        values = small_display.innerHTML;
-        value = sqr(value);
-        big_display.innerText = value;
-        small_display.innerText = `sqr(${values})`;
-    }
-
+function delete_history() {
+    history_display.innerHTML = '';
+    small_display.innerHTML = '';
+    big_display.innerHTML = '0';
 }
+
+function history() {
+    history_html += `            
+            <div>
+                <p class="small_history_display">${small_display.innerText}</p>
+                <p class="big_history_display">=${big_display.innerText}</p>
+                <hr>
+            </div>`;
+    history_display.innerHTML = history_html;
+}
+
 
 function result(value) {
     if (value === '') {
@@ -87,35 +75,60 @@ function result(value) {
     return values;
 }
 
-function trigonometric(value) {
-    if (input === 'sin') {
-        value = value * (Math.PI / 180);
-        value = Math.sin(value);
-        values = small_display.innerHTML;
-        // value = tangent(value);
-        small_display.innerText = `sin(${values})`;
-        big_display.innerText = value;
-    } else if (input === 'cos') {
-        value = value * (Math.PI / 180);
-        value = Math.cos(value);
-        values = small_display.innerHTML;
-        // value = tangent(value);
-        small_display.innerText = `cos(${values})`;
-        big_display.innerText = value;
-    } else {
-        value = value * (Math.PI / 180);
-        value = Math.tan(value);
-        values = small_display.innerHTML;
-        // value = tangent(value);
-        small_display.innerText = `tan(${values})`;
-        big_display.innerText = value;
+
+function remover() {
+    value = small_display.innerText;
+    value = value.substring(0, value.length - 1);
+    small_display.innerText = value;
+    result(value);
+}
+
+function log_root_n(value) {
+    values = small_display.innerText;
+    if (input === 'log') {
+        value = logarithm(value);
+        small_display.innerText = `log(${values})`;
+    } else if (input === 'ln') {
+        value = ln(value);
+        small_display.innerText = `ln(${values})`;
+    } else if (input === '√') {
+        value = squareRoot(value);
+        small_display.innerText = `sqrt(${values})`;
+    } else if (input === 'n!') {
+        value = factorial(value);
+        small_display.innerText = `fact(${values})`;
+    } else if (input === 'x²') {
+        value = sqr(value);
+        small_display.innerText = `sqr(${values})`;
+    } else if (input === '1/x') {
+        value = logarithm(value);
+        small_display.innerText = `1/(${values})`;
     }
+    big_display.innerText = value;
+    return value;
+}
+
+function trigonometric(value) {
+    value = value * (Math.PI / 180);
+    values = small_display.innerHTML;
+    if (input === 'sin') {
+        value = Math.sin(value);
+        small_display.innerText = `sin(${values})`;
+    } else if (input === 'cos') {
+        value = Math.cos(value);
+        small_display.innerText = `cos(${values})`;
+    } else {
+        value = Math.tan(value);
+        small_display.innerText = `tan(${values})`;
+    }
+    big_display.innerText = value;
 }
 
 function clear() {
-    value = '';
+    value = '0';
     small_display.innerHTML = value;
     big_display.innerHTML = value;
+    value = '';
 }
 
 function factorial(value) {
@@ -156,6 +169,18 @@ function logarithm(value) {
     }
 }
 
+function ln(value) {
+    if (value === '') {
+        return 0;
+    } else {
+        if (value === 0) {
+            return 0;
+        } else {
+            return Math.log(value);
+        }
+    }
+}
+
 function squareRoot(value) {
     return value = Math.sqrt(value);
 }
@@ -163,13 +188,14 @@ function squareRoot(value) {
 
 function handleConst(constants) {
     if (value === '') {
-        small_display.innerText = '';
-        big_display.innerText = constants;
+        small_display.innerText = constants;
+        value = constants;
     } else {
         value = value + expo;
         small_display.innerText = value;
     }
 }
+
 
 document.body.addEventListener('keydown', (event) => {
     key = event.key;
@@ -200,9 +226,22 @@ document.body.addEventListener('keydown', (event) => {
         small_display.innerHTML = value;
     } else if (key === 'Enter') {
         result(value);
+        history();
         value = values || '';
     } else if (key === 'c' || key === 'Delete') {
         clear();
+    } else if (key === '(') {
+        big_display.innerHTML = '';
+        value += '(';
+        event.preventDefault();
+        small_display.innerHTML = value;
+    } else if (key === ')') {
+        big_display.innerHTML = '';
+        value += ')';
+        event.preventDefault();
+        small_display.innerHTML = value;
+    } else if (key === 'Backspace') {
+        remover();
     }
 });
 

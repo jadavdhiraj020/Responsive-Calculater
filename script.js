@@ -17,35 +17,22 @@ function print_number() {
             input = element.innerText;
             if (input === 'C') {
                 clear();
-            } else if (input === 'n!') {
-                values = small_display.innerHTML;
-                value = factorial(value);
-                big_display.innerText = value;
-                small_display.innerText = `fact(${values})`;
-            } else if (input === 'x²') {
-                values = small_display.innerHTML;
-                value = sqr(value);
-                big_display.innerText = value;
-                small_display.innerText = `sqr(${values})`;
             } else if (input === 'π') {
                 handleConst(pi);
             } else if (input === 'e') {
                 handleConst(expo);
-            } else if (input === '√') {
-                values = small_display.innerHTML;
-                value = squareRoot(value);
-                small_display.innerText = `sqrt(${values})`;
-                big_display.innerText = value;
             } else if (input === 'x^y') {
                 value += '^';
                 small_display.innerHTML = value;
+            } else if (input === 'log' || input === 'n!' || input === '√' || input === 'x²') {
+                log_root_n(value);
             } else if (input === '10^x') {
                 value = '10^' + value;
                 small_display.innerHTML = value;
-            } else if (input === 'log') {
+            } else if (input === '1/x') {
                 values = small_display.innerHTML;
+                small_display.innerText = `1/(${values})`;
                 value = logarithm(value);
-                small_display.innerText = `log(${values})`;
                 big_display.innerText = value;
             } else if (input === 'sin' || input === 'cos' || input === 'tan') {
                 trigonometric(value);
@@ -62,6 +49,31 @@ function print_number() {
     });
 }
 
+
+function log_root_n(value) {
+    if (input === 'log') {
+        values = small_display.innerHTML;
+        value = logarithm(value);
+        small_display.innerText = `log(${values})`;
+        big_display.innerText = value;
+    } else if (input === '√') {
+        values = small_display.innerHTML;
+        value = squareRoot(value);
+        small_display.innerText = `sqrt(${values})`;
+        big_display.innerText = value;
+    } else if (input === 'n!') {
+        values = small_display.innerHTML;
+        value = factorial(value);
+        big_display.innerText = value;
+        small_display.innerText = `fact(${values})`;
+    } else if (input === 'x²') {
+        values = small_display.innerHTML;
+        value = sqr(value);
+        big_display.innerText = value;
+        small_display.innerText = `sqr(${values})`;
+    }
+
+}
 
 function result(value) {
     if (value === '') {

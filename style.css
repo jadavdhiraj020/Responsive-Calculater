@@ -142,14 +142,19 @@ body {
         width: 100vh;
     }
 
+
+    .display_container {
+        height: 30vh;
+    }
+
     .small_display {
-        height: 13vh;
+        height: 10vh;
         font-weight: bolder;
         font-size: 1.2rem;
     }
 
     .big_display {
-        height: 22vh;
+        height: 20vh;
         font-size: 2.4rem;
     }
 

@@ -63,6 +63,18 @@ function print_number() {
 }
 
 
+function result(value) {
+    if (value === '') {
+        value = '0';
+    } else {
+        value = value.replace('^', '**');
+        value = eval((`${value}`));
+    }
+    values = eval(value);
+    big_display.innerHTML = value;
+    return values;
+}
+
 function trigonometric(value) {
     if (input === 'sin') {
         value = value * (Math.PI / 180);
@@ -86,18 +98,6 @@ function trigonometric(value) {
         small_display.innerText = `tan(${values})`;
         big_display.innerText = value;
     }
-}
-
-function result(value) {
-    if (value === '') {
-        value = '0';
-    } else {
-        value = value.replace('^', '**');
-        value = eval((`${value}`));
-    }
-    values = eval(value);
-    big_display.innerHTML = value;
-    return values;
 }
 
 function clear() {
@@ -148,15 +148,6 @@ function squareRoot(value) {
     return value = Math.sqrt(value);
 }
 
-function Ten_exp(value) {
-    if (value === '') {
-        value = 1;
-    } else {
-        value = Math.pow(10, value);
-        small_display.innerHTML = value;
-        big_display.innerHTML = value;
-    }
-}
 
 function handleConst(constants) {
     if (value === '') {

@@ -4,7 +4,6 @@ let big_display = document.querySelector('.big_display');
 let history_display = document.querySelector('.history_display');
 const pi = 3.1415926535897932384626433832795;
 const expo = 2.7182818284590452353602874713527;
-let alternatives = 0;
 let value = '0';
 let history_html = '';
 let values;
@@ -195,7 +194,7 @@ function ln(value) {
 }
 
 function squareRoot(value) {
-    return value = Math.sqrt(value);
+    return Math.sqrt(value);
 }
 
 

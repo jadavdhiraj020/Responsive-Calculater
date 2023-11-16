@@ -101,7 +101,7 @@ function log_root_n(value) {
         value = sqr(value);
         small_display.innerText = `sqr(${values})`;
     } else if (input === '1/x') {
-        value = logarithm(value);
+        value = divider(value);
         small_display.innerText = `1/(${values})`;
     }
     big_display.innerText = value;
@@ -122,6 +122,7 @@ function trigonometric(value) {
         small_display.innerText = `tan(${values})`;
     }
     big_display.innerText = value;
+    return value;
 }
 
 function clear() {
@@ -165,6 +166,18 @@ function logarithm(value) {
             return 0;
         } else {
             return Math.log10(value);
+        }
+    }
+}
+
+function divider(value) {
+    if (value === '') {
+        return Infinity;
+    } else {
+        if (value === 0) {
+            return Infinity;
+        } else {
+            return 1/value;
         }
     }
 }

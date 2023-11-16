@@ -195,6 +195,7 @@ function ln(value) {
 
 function squareRoot(value) {
     return Math.sqrt(value);
+
 }
 
 

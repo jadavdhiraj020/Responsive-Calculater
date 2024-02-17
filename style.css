@@ -1,12 +1,19 @@
-@import url('https://cdn-uicons.flaticon.com/2.0.0/uicons-bold-straight/css/uicons-bold-straight.css');
+:root {
+    --primary-color: #524A4E; /* Default primary color */
+    --background-color: #CED3CA; /* Default background color */
+    --hover-color: #E6D3D9; /* Default hover color */
+    --text-color: #333333; /* Default text color */
+    --box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Default box shadow */
+}
 
 * {
     margin: 0;
     padding: 0;
+    -webkit-box-sizing: border-box;
     box-sizing: border-box;
     font-family: 'Courier New', Courier, monospace;
     font-size: 1.25rem;
-    /*color: #fff;*/
+    color: var(--text-color) !important; /* Applying text color variable */
 }
 
 html,
@@ -22,6 +29,8 @@ body {
 .main {
     height: 100vh;
     width: 100vw;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
     overflow: hidden;
 }
@@ -36,9 +45,8 @@ body {
     width: 100%;
     font-weight: 500;
     border-radius: 15px;
-    border: 5px solid rgb(166, 144, 144);
-    background: linear-gradient(190deg, rgba(34, 193, 195, 1) 0%, rgba(253, 187, 45, 1) 99%);
-
+    border: 5px solid var(--primary-color);
+    background: linear-gradient(190deg, rgba(204, 211, 202, 1) 0%, rgba(245, 232, 221, 1) 99%);
 }
 
 .small_display {
@@ -51,58 +59,76 @@ body {
     font-size: 5rem;
 }
 
-.big_display, .small_display {
+.big_display,
+.small_display {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
+    -webkit-box-pack: end;
+    -ms-flex-pack: end;
     justify-content: end;
 }
 
-.btn, .buttons {
+.btn,
+.buttons {
     height: 8.1vh;
     width: 15vw;
     font-size: 1.2rem;
     font-weight: 900;
     color: white;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
     justify-content: center;
     border-radius: 8px;
     cursor: pointer;
-    border: 1px solid #249c5c;
-    box-shadow: 1px 1px 1px rgba(93, 82, 88, .9),
-    1px 1px 2px rgba(93, 82, 88, .8),
-    1px 1px 3px rgba(93, 82, 88, .7),
-    1px 1px 4px rgba(93, 82, 88, .6),
-    1px 1px 5px rgba(93, 82, 88, .5),
-    1px 1px 6px rgba(93, 82, 88, .4),
-    1px 1px 7px rgba(93, 82, 88, .3);
+    border: 1px solid var(--primary-color);
+    box-shadow: var(--box-shadow);
 }
 
 .btn_container {
     height: 65vh;
     width: 100%;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
     user-select: none;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -ms-flex-line-pack: space-evenly;
     align-content: space-evenly;
+    -webkit-box-pack: space-evenly;
+    -ms-flex-pack: space-evenly;
     justify-content: space-evenly;
+    -ms-flex-wrap: wrap;
     flex-wrap: wrap;
     border-radius: 17px;
-    background: rgb(9, 9, 121);
-    background: linear-gradient(10deg, rgba(9, 9, 121, 1) 0%, rgba(158, 96, 191, 1) 62%, rgba(46, 180, 208, 1) 77%);
-    opacity: .8;
-
+    background: linear-gradient(80deg, rgba(204, 211, 202, 1) 0%, rgba(245, 232, 221, 1) 62%, rgba(238, 211, 217, 1) 77%);
+    opacity: 0.8;
 }
 
-.btn:hover, .buttons:hover {
-    background: rgba(9, 9, 121, 1);
-    background: linear-gradient(190deg, rgba(9, 9, 121, 1) 0%, rgba(158, 96, 191, 1) 62%, rgba(46, 180, 208, 1) 77%);
+.btn:hover,
+.buttons:hover {
+    background: var(--hover-color);
 }
 
 .btn_color {
-    background-color: rgb(100, 101, 248);
+    background-color: rgb(238, 211, 217);
 }
 
 .right {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
     flex-direction: column;
     position: relative;
     height: 100vh;
@@ -110,36 +136,52 @@ body {
 }
 
 .history {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
     justify-content: center;
     height: 10vh;
     color: #ffffff;
-    background: rgb(131, 58, 180);
-    background: linear-gradient(90deg, rgba(131, 58, 180, 1) 0%, rgba(253, 29, 29, 1) 50%, rgba(252, 176, 69, 1) 100%);
+    background: rgb(204, 211, 202);
+    background: -webkit-gradient(linear, left top, right top, from(rgba(204, 211, 202, 1)), color-stop(50%, rgba(245, 232, 221, 1)), to(rgba(238, 211, 217, 1)));
+    background: -o-linear-gradient(left, rgba(204, 211, 202, 1) 0%, rgba(245, 232, 221, 1) 50%, rgba(238, 211, 217, 1) 100%);
+    background: linear-gradient(90deg, rgba(204, 211, 202, 1) 0%, rgba(245, 232, 221, 1) 50%, rgba(238, 211, 217, 1) 100%);
 }
 
 .history_display {
     height: 90vh;
-    background: rgb(238, 174, 202);
-    background: radial-gradient(circle, rgba(238, 174, 202, 1) 0%, rgba(148, 187, 233, 1) 100%);
+    background: rgb(204, 211, 202);
+    background: -o-radial-gradient(circle, rgba(204, 211, 202, 1) 0%, rgba(245, 232, 221, 1) 100%);
+    background: radial-gradient(circle, rgba(204, 211, 202, 1) 0%, rgba(245, 232, 221, 1) 100%);
 }
 
 .small_history_display {
     height: 3vh;
-    margin: 0.5vh 0 0 0 ;
+    margin: 0.5vh 0 0 0;
 }
 
 .big_history_display {
     height: 5vh;
 }
 
-.small_history_display, .big_history_display {
+.small_history_display,
+.big_history_display {
     margin: 0;
     padding: 0;
-    font-size: .9rem;
+    font-size: 0.9rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
+    -webkit-box-pack: end;
+    -ms-flex-pack: end;
     justify-content: end;
 }
 
@@ -152,15 +194,11 @@ body {
     font-size: 2rem;
 }
 
-
-@media (width <= 860px) {
-
-
+@media (max-width: 860px) {
     .left {
-        height: 100dvh;
+        height: 100vh;
         width: 100vh;
     }
-
 
     .display_container {
         height: 30vh;
@@ -182,7 +220,7 @@ body {
     }
 
     .btn {
-        font-size: .9rem;
+        font-size: 0.9rem;
         width: 18vw;
     }
 }
